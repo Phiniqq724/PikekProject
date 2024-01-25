@@ -4,6 +4,8 @@ public class Omen extends Agent implements Ability{
     Scanner in = new Scanner(System.in);
     String agent = "Omen";
     String pilihSenjata;
+    int health = super.health;
+    String pilihShield;
     @Override
     public String player(String playerName) {
         System.out.print("Insert Player name = ");
@@ -25,26 +27,21 @@ public class Omen extends Agent implements Ability{
         this.agent = agent;
         System.out.println("You ("+ agent+") teleport to safe place");
     }
-    public String pilihSenjata(){
-        System.out.print("Pilih senjata : \n a. Vandal \n b. Phantom\n = ");
-        this.pilihSenjata = in.nextLine();
-        String pilihSenjata = this.pilihSenjata;
-        switch (pilihSenjata) {
+    int buyShield() {
+        System.out.println("Pilih Shield : \n a. 25 \n b. 50");
+        this.pilihShield = in.nextLine();
+        switch (pilihShield) {
             case "a":
-                pilihSenjata = "Vandal";
-                return pilihSenjata;
+                this.health = this.health + 25;
+                return this.health;
             case "b":
-                pilihSenjata = "Phantom";
-                return pilihSenjata;
+                this.health = this.health+50;
+                return this.health;
             default:
-                return null;
+                System.out.println("No Option");
+                return this.health;
         }
     }
-
-
-
-
-
     @Override
     public void stunt(String agent) {
         // Gaada
